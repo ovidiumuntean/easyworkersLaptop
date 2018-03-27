@@ -1,0 +1,207 @@
+h3.with-line {
+  border-bottom: 1px solid;
+  color: black;
+  font-weight: normal;
+  padding-top: 30px;
+  margin-bottom: 14px;
+  line-height: 39px;
+  width: 100%;
+}
+
+.panel .panel-body h3.with-line {
+  margin-bottom: 14px;
+  margin-top: 0;
+}
+
+.profile-block {
+  background: white;
+}
+.profile-block .nav-tabs > li > a {
+  border-radius: 0;
+  transition: background, 0s, ease !important;
+}
+.profile-block .progress {
+  border-radius: 0;
+  margin-bottom: 6px;
+}
+.profile-block .progress-info {
+  margin-bottom: 8px;
+  margin-top: -2px;
+}
+.profile-block .tab-content {
+  padding: 15px 15px 25px;
+}
+.profile-block .progress-bar-primary {
+  background-color: lightblue;
+}
+.profile-block .form-group {
+  margin-bottom: 14px;
+}
+.profile-block .form-group label {
+  text-align: right;
+}
+.profile-block .form-control {
+  font-size: 13px;
+}
+
+.notification .form-group label {
+  text-align: left;
+  padding-left: 26px;
+}
+
+.userpic {
+  border: 1px dashed #b8b8b8;
+  width: 202px;
+  height: 202px;
+  position: relative;
+  cursor: pointer;
+}
+.userpic .userpic-wrapper {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userpic img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.userpic i {
+  display: none;
+  position: absolute;
+  font-size: 32px;
+  cursor: pointer;
+  color: pink;
+  top: -11px;
+  right: -11px;
+  height: 26px;
+  border-radius: 50%;
+}
+.userpic i:before {
+  line-height: 26px;
+}
+.userpic i:hover {
+  color: red;
+}
+.userpic a.change-userpic {
+  display: none;
+  width: 202px;
+  background: rgba(0, 0, 0, 0.7);
+  transition: all 200ms ease-in-out;
+  color: black;
+  text-decoration: none;
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  line-height: 32px;
+  text-align: center;
+}
+.userpic:hover i {
+  display: block;
+}
+.userpic:hover .change-userpic {
+  display: block;
+}
+
+.save-profile {
+  margin: 23px 0 12px 12px;
+}
+
+a.sn-link {
+  transition: none;
+  display: block;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 8px;
+  color: black;
+  border: 1px solid transparent;
+  margin-bottom: 23px;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+a.sn-link i.socicon {
+  padding: 6px;
+  border-radius: 50%;
+  width: auto;
+  font-size: 17px;
+  margin-right: 8px;
+  background-color: rgba(0, 0, 0, 0.15);
+  color: black;
+}
+a.sn-link span {
+  font-size: 14px;
+  line-height: 29px;
+}
+a.sn-link.connected {
+  border-color: pink;
+  border-width: 2px;
+  padding: 7px;
+}
+a.sn-link.connected span {
+  color: black;
+}
+a.sn-link.connected i {
+  background: pink;
+}
+a.sn-link.connected em {
+  display: block;
+}
+a.sn-link:hover {
+  border-color: pink;
+  border-width: 2px;
+  padding: 7px;
+}
+a.sn-link:hover span {
+  color: black;
+}
+a.sn-link:hover i {
+  background: pink;
+}
+a.sn-link .socicon {
+  background: transparent;
+}
+
+.close {
+  opacity: 1;
+  box-shadow: none;
+  outline: none !important;
+}
+.close:hover, .close:focus, .close:active {
+  opacity: 1;
+}
+
+.connected .sn-link-close {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  width: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 32px;
+  color: pink;
+  transition: all 0.1s ease;
+  outline: none;
+}
+.connected .sn-link-close:hover {
+  color: red;
+  transform: scale(1.2);
+}
+
+.social-profiles {
+  padding-top: 3px;
+  margin-bottom: -3px;
+  padding-left: 12px;
+}
+
+.profile-page .form-group label {
+  line-height: 34px;
+  font-size: 14px;
+  font-weight: lighter;
+}
+.profile-page .form-group input {
+  font-weight: lighter;
+}

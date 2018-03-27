@@ -1,0 +1,39 @@
+
+<!--<table class="table table-hover">-->
+  <!--<thead>-->
+  <!--<tr>-->
+    <!--<th scope="col">Job Id</th>-->
+    <!--<th scope="col">Title</th>-->
+    <!--<th scope="col">Description</th>-->
+    <!--<th scope="col">Category</th>-->
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tbody>-->
+  <!--</tbody>-->
+<!--</table>-->
+
+
+    <!--<div class="card" *ngFor="let job of jobs">-->
+      <!--<div class="card-body">-->
+        <!--<h4 class="card-title">{{job.title}}</h4>-->
+        <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
+        <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+        <!--<a href="#" class="card-link">Card link</a>-->
+        <!--<a href="#" class="card-link">Another link</a>-->
+      <!--</div>-->
+    <!--</div>-->
+<p></p>
+<div (submit)="onApplySubmit()" align="justify" class="card border-info mb-3" style="max-width: 40rem;" *ngFor="let job of jobs; let i = index">
+
+  <div class="card-header" ><i class="material-icons mdi-18px">place</i> <a>{{job.city}}</a></div>
+  <div class="card-body">
+    <h4 class="card-title" style="color: green">{{job.title}}</h4>
+    <p class="card-text">{{job.description}}</p>
+    <p>Experience Required: {{job.experience}} years</p>
+    <div align="right">
+      <button *ngIf="authService.loggedIn()" type="submit" (click)="onApplySubmit(i)" class="btn btn-outline-primary btn-sm">Apply</button>
+      <button *ngIf="authService.employeeLoggedIn()" type="submit" class="btn btn-outline-primary btn-sm">Edit</button>
+      <button type="button" class="btn btn-outline-info btn-sm">Show More</button>
+    </div>
+  </div>
+</div>
