@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+// import {DatePickerModule} from 'ng2-datepicker-bootstrap';
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 
@@ -16,6 +17,7 @@ import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AuthGuard } from './guards/auth.guard';
+
 import { EmployeeRegisterComponent } from './components/employee-register/employee-register.component';
 import { CompanyRegisterComponent } from './components/company-register/company-register.component';
 import { CompanyHomeComponent } from './components/company-home/company-home.component';
@@ -32,8 +34,8 @@ const appRoutes: Routes =  [
   {path:'company/register', component: CompanyRegisterComponent},
   {path:'company/login', component: CompanyLoginComponent},
   {path:'company/profile', component: CompanyProfileComponent, canActivate:[AuthGuard]},
-  {path:'company/createJob', component: CreateJobComponent},
-  {path:'company/jobs', component: ViewCompanyJobsComponent},
+  {path:'company/createJob', component: CreateJobComponent, canActivate:[AuthGuard]},
+  {path:'company/jobs', component: ViewCompanyJobsComponent, canActivate:[AuthGuard]},
   {path:'company', component: CompanyHomeComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]}
@@ -59,9 +61,10 @@ const appRoutes: Routes =  [
   imports: [
     BrowserModule,
     FormsModule,
+    // DatePickerModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule
   ],
   providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
