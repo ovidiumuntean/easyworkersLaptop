@@ -45,7 +45,8 @@ const appRoutes: Routes =  [
   {path:'company', component: CompanyHomeComponent},
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-  {path:'job/view-job', component: ViewJobComponent, canActivate:[AuthGuard]}
+  {path:'job/view-job', component: ViewJobComponent, canActivate:[AuthGuard]},
+  {path:'job/job-applications', component: JobApplicationsComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
