@@ -1,0 +1,17 @@
+<body >
+<div class="container align-content-center" align="center">
+  <div align="center" class="card border-info mb-3 " style="max-width: 40rem;" *ngIf="job">
+
+    <div class="card-header" ><i class="material-icons mdi-18px">place</i> <a>{{job.company.address.city}}</a></div>
+    <div class="card-body">
+      <h4 class="card-title" style="color: green">{{job.title}}</h4>
+      <p class="card-text">{{job.description}}</p>
+      <p>Experience Required: {{job.experience}} years</p>
+      <div align="right">
+        <button *ngIf="authService.loggedIn()" type="submit" class="btn btn-outline-primary btn-sm">Apply</button>
+        <button *ngIf="authService.employeeLoggedIn()" type="submit" class="btn btn-outline-primary btn-sm">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

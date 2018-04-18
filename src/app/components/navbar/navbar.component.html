@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-light" >
+  <a class="navbar-brand" href="#"><i class="material-icons orange600">supervisor_account</i></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" (click)="toggleState()" aria-expanded="false" aria-label="Toggle navigation" style="">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01" [ngClass]="{'in':isIn}">
+    <ul class="navbar-nav mr-auto">
+      <!--<form class="form-inline my-2 my-lg-0">-->
+        <!--<div class="input-group">-->
+        <!--<button class="btn btn-secondary my-2 my-sm-0" type="submit">All</button>-->
+        <!--<input class="form-control mr-sm-2" type="text" placeholder="Search">-->
+        <!--<div class="input-group-btn">-->
+          <!--<button class="btn btn-default" type="submit"><i class="material-icons mdi-10px">search</i></button>-->
+        <!--</div>-->
+        <!--</div>-->
+      <!--</form>-->
+      <!--<div class="col-sm-3 col-md-3 pull-right" *ngIf="authService.loggedIn() || authService.employeeLoggedIn()">-->
+        <!--<form class="navbar-form my-2 my-lg-0" role="search">-->
+          <!--<div class="input-group">-->
+            <!--<button class="btn btn-secondary my-2 my-sm-0 no-border-radius-right" type="submit">All</button>-->
+            <!--<input type="text" class="form-control" placeholder="Search Books..." name="srch-term" id="srch-term">-->
+            <!--<div class="input-group-btn">-->
+              <!--<button class="btn btn-default btn-warning no-border-radius-left" type="submit"><i class="material-icons mdi-10px md-black">search</i></button>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</form>-->
+      <!--</div>-->
+      <li class="nav-item" *ngIf="!authService.employeeLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/']">Home <span></span></a>
+      </li>
+      <li class="nav-item" *ngIf="authService.employeeLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/company']">Home <span></span></a>
+      </li>
+    </ul>
+    <!--<div class="col-sm-3 col-md-3 pull-right">-->
+      <!--<form class="navbar-form my-2 my-lg-0" role="search">-->
+        <!--<div class="input-group">-->
+          <!--&lt;!&ndash;<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>&ndash;&gt;-->
+          <!--&lt;!&ndash;<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">&ndash;&gt;-->
+          <!--&lt;!&ndash;<a class="dropdown-item" href="#">Action</a>&ndash;&gt;-->
+          <!--&lt;!&ndash;<a class="dropdown-item" href="#">Another action</a>&ndash;&gt;-->
+          <!--&lt;!&ndash;<a class="dropdown-item" href="#">Something else here</a>&ndash;&gt;-->
+          <!--&lt;!&ndash;<div class="dropdown-divider"></div>&ndash;&gt;-->
+          <!--&lt;!&ndash;<a class="dropdown-item" href="#">Separated link</a>&ndash;&gt;-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!--<button class="btn btn-secondary dropdown-toggle btn-secondary my-2 my-sm-0 no-border-radius-right" type="submit">All</button>-->
+
+          <!--<input type="text" class="form-control" placeholder="Search Jobs..." name="srch-term" id="srch-term">-->
+          <!--<div class="input-group-btn">-->
+            <!--<button class="btn btn-default btn-warning no-border-radius-left" type="submit"><i class="material-icons mdi-10px md-black">search</i></button>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</form>-->
+    <!--</div>-->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/company/jobs']">Dashboard </a>
+      </li>
+      <li class="nav-item" *ngIf="authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/profile']">Profile </a>
+      </li>
+      <li class="nav-item" *ngIf="!authService.loggedIn() && !authService.employeeLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+      <a class="nav-link" [routerLink]="['/login']">Login </a>
+    </li>
+      <!--<li class="nav-item" *ngIf="!authService.loggedIn() && !authService.companyLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">-->
+        <!--<a class="nav-link" [routerLink]="['/employeeRegister']">EmployeeRegister </a>-->
+      <!--</li>-->
+      <li class="nav-item" *ngIf="!authService.loggedIn() && !authService.employeeLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/company']">Company </a>
+      </li>
+      <li class="nav-item" *ngIf="authService.employeeLoggedIn() && !authService.loggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/company/profile']">Profile </a>
+      </li>
+      <li class="nav-item" *ngIf="!authService.loggedIn() && !authService.employeeLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
+        <a class="nav-link" [routerLink]="['/register']">Register</a>
+      </li>
+      <li class="nav-item" *ngIf="authService.loggedIn() || authService.employeeLoggedIn()">
+        <a class="nav-link" (click)="onLogoutClick()" href="#">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
