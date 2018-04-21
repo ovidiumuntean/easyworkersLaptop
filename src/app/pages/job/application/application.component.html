@@ -1,0 +1,89 @@
+<body >
+<div class="container" align="center" *ngIf="application">
+  <div class="card border-info mb-3 " style="max-width: 40rem; margin-top: 2rem" >
+
+    <div class="card-header" ><i class="fas fa-map-marker"></i> <a>{{application.company.address.city}}</a></div>
+    <div class="card-body">
+      <h4 class="card-title" style="color: green">{{application.title}}</h4>
+      <p class="card-text">{{application.description}}</p>
+      <p>Experience Required: {{application.experience}} years</p>
+      <div align="right">
+        <button *ngIf="authService.loggedIn()" type="submit" class="btn btn-outline-primary btn-sm">Apply</button>
+        <button *ngIf="authService.employeeLoggedIn()" type="submit" class="btn btn-outline-primary btn-sm">Edit</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div *ngIf="application.temp_employees && authService.employeeLoggedIn()" class="alert alert-dismissible alert-info">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4 class="alert-heading">No Applicants applied for this job!</h4>
+    <p class="mb-0">Click on the following link to go Home,
+      <a *ngIf="authService.loggedIn()" [routerLink]="['']" class="alert-link">Home</a>
+      <a *ngIf="authService.employeeLoggedIn()" [routerLink]="['/company']" class="alert-link">Home</a>.
+    </p>
+  </div>
+
+  <div *ngIf="application.temp_employees && authService.employeeLoggedIn()">
+  <div class="row; marginLeft20" style="margin-top: 3rem">
+    <h2 class="text-info">Applicants</h2>
+  </div>
+  <table class="table table-sm"  id="applicantsTable">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"  (click)="onSortTable('name')">
+        Name
+        <span *ngIf="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+        <span *ngIf="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+      </th>
+      <th scope="col" (click)="onSortTable('birthday')">
+        Birthday
+        <span *ngIf="sortType == 'birthday' && !sortReverse" class="fa fa-caret-down"></span>
+        <span *ngIf="sortType == 'birthday' && sortReverse" class="fa fa-caret-up"></span>
+      </th>
+      <th scope="col" (click)="onSortTable('phoneNo')">
+        Mobile
+        <span *ngIf="sortType == 'phoneNo' && !sortReverse" class="fa fa-caret-down"></span>
+        <span *ngIf="sortType == 'phoneNo' && sortReverse" class="fa fa-caret-up"></span>
+      </th>
+      <th scope="col" (click)="onSortTable('email')">
+        Email
+        <span *ngIf="sortType == 'email' && !sortReverse" class="fa fa-caret-down"></span>
+        <span *ngIf="sortType == 'email' && sortReverse" class="fa fa-caret-up"></span>
+      </th>
+      <th scope="col">Image</th>
+      <th scope="col">Cv</th>
+      <th scope="col">View</th>
+      <th scope="col">Accept</th>
+      <th scope="col">Reject</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor=" let emp of application.temp_employees; let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{emp.fullName}}</td>
+      <td>{{validateService.dateToString(emp.birthday)}}</td>
+      <td>{{emp.phone_no}}</td>
+      <td>{{emp.email}}</td>
+      <td>
+        <div class="carousel-inner">
+          <img *ngIf="emp.picture" style="width:60px; height:45px" class="img-responsive" (click)="setImage($event)" [src]='sanitizer.bypassSecurityTrustResourceUrl(emp.picture)'>
+        </div>
+      </td>
+      <td>
+        <a>Cv</a>
+      </td>
+      <td><button type="button" class="btn btn-outline-info" (click)="onViewEmp(emp.id)">View</button></td>
+      <td><button type="button" class="btn btn-outline-success" (click)="onAccept(emp.id)">Accept</button></td>
+      <td><button type="button" class="btn btn-outline-danger" (click)="onReject(emp.id)">Reject</button></td>
+
+    </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+</body>
