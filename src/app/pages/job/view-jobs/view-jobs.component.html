@@ -38,6 +38,14 @@
     <!--</div>-->
   <!--</div>-->
   <div class="container-fluid align-content-center" align="center">
+    <div *ngIf="jobs && jobs.length == 0" class="alert alert-dismissible alert-info">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <h4 class="alert-heading">No Jobs Found!</h4>
+      <p class="mb-0">Click on the following link to go Home,
+        <a *ngIf="authService.loggedIn()" [routerLink]="['']" class="alert-link">Home</a>
+        <a *ngIf="authService.employeeLoggedIn()" [routerLink]="['/company']" class="alert-link">Home</a>.
+      </p>
+    </div>
     <div (submit)="onApplySubmit()" align="justify" class="card border-info mb-3" style="max-width: 40rem;" *ngFor="let job of jobs; let i = index">
 
       <div class="card-header" ><i class="material-icons mdi-18px">place</i> <a>{{job.city}}</a></div>

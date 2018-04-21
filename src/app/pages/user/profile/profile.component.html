@@ -1,221 +1,230 @@
-<!--<div *ngIf="user">-->
-  <!--<h2 color="green" class="page-header">{{user.firstName}}</h2>-->
-  <!--<ul class="list-group">-->
-    <!--<li class="list-group-item">Permission : {{user.permission}}</li>-->
-    <!--<li class="list-group-item">Email : {{user.email}}</li>-->
-  <!--</ul>-->
-<!--</div>-->
-<div class="container-fluid align-content-center" align="center">
-<div *ngIf="user" ba-panel ba-panel-class="profile-page">
-  <div class="panel-content">
-    <div class="progress-info">Your profile is 70% Complete</div>
-    <div class="progress">
-      <div class="progress-bar progress-bar-primary progress-bar-striped active" role="progressbar"
-           aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-      </div>
-    </div>
-
-    <h3 class="with-line">General Information</h3>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group row clearfix">
-          <label for="inputFirstName" class="col-sm-3 control-label">Picture</label>
-
-          <div class="col-sm-9">
-            <div class="userpic">
-              <div class="userpic-wrapper">
-                <img ng-src="" ng-click="">
-              </div>
-              <i class="ion-ios-close-outline" ng-click="" ng-if=""></i>
-              <a href class="change-userpic" ng-click="">Change Profile Picture</a>
-              <input type="file" ng-show="false" id="uploadFile" ng-file-select="">
+<div class="container" *ngIf="user">
+  <div class="row my-2">
+    <div class="col-lg-8 order-lg-2">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
+        </li>
+        <li class="nav-item">
+          <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+        </li>
+      </ul>
+      <div class="tab-content py-4">
+        <div class="tab-pane active" id="profile">
+          <h5 class="mb-3">{{user.fullName}}</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <h6>About</h6>
+              <p>
+                Web Designer, UI/UX Engineer
+              </p>
+              <h6>Hobbies</h6>
+              <p>
+                Indie music, skiing and hiking. I love the great outdoors.
+              </p>
+            </div>
+            <div class="col-md-6">
+              <h6>Recent badges</h6>
+              <a href="#" class="badge badge-dark badge-pill">html5</a>
+              <a href="#" class="badge badge-dark badge-pill">react</a>
+              <a href="#" class="badge badge-dark badge-pill">codeply</a>
+              <a href="#" class="badge badge-dark badge-pill">angularjs</a>
+              <a href="#" class="badge badge-dark badge-pill">css3</a>
+              <a href="#" class="badge badge-dark badge-pill">jquery</a>
+              <a href="#" class="badge badge-dark badge-pill">bootstrap</a>
+              <a href="#" class="badge badge-dark badge-pill">responsive-design</a>
+              <hr>
+              <span class="badge badge-primary"><i class="fa fa-user"></i> 900 Followers</span>
+              <span class="badge badge-success"><i class="fa fa-cog"></i> 43 Forks</span>
+              <span class="badge badge-danger"><i class="fa fa-eye"></i> 245 Views</span>
+            </div>
+            <div class="col-md-12">
+              <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> Recent Activity</h5>
+              <table class="table table-sm table-hover table-striped">
+                <tbody>
+                <tr>
+                  <td>
+                    <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
             </div>
           </div>
+          <!--/row-->
+        </div>
+        <div class="tab-pane" id="messages">
+          <div class="alert alert-info alert-dismissable">
+            <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
+          </div>
+          <table class="table table-hover table-striped">
+            <tbody>
+            <tr>
+              <td>
+                <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="float-right font-weight-bold">Yesterday</span> There has been a request on your account since that was..
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper eros eget luctus.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for tibulum tincidunt ullamcorper eros.
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-pane" id="edit">
+          <form role="form">
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">First name</label>
+              <div class="col-lg-9">
+                <input class="form-control" type="text" name="first_name" [(ngModel)]="newUser.first_name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+              <div class="col-lg-9">
+                <input class="form-control" type="text" name="last_name" [(ngModel)]="newUser.last_name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Email</label>
+              <div class="col-lg-9">
+                <input class="form-control" type="email" name="email" [(ngModel)]="newUser.email">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Company</label>
+              <div class="col-lg-9">
+                <input class="form-control" type="text" value="">
+              </div>
+            </div>
+            <!-- -->
+            <div class="form-group row">
+              <legend class="col-lg-3 col-form-label form-control-label">Gender</legend>
+              <div class="col-lg-9" (change)="onGender($event)" >
+                <label class="radio-inline">
+                  <input type="radio" class="form-control" [(ngModel)]="newUser.gender" name="gender" id="optionsRadios1" value="M" checked="">
+                  Male
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" class="form-control" [(ngModel)]="newUser.gender" name="gender" id="optionsRadios2" value="F">
+                  Female
+                </label>
+              </div>
+            </div>
+            <!-- Text input-->
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label" >Address</label>
+              <div class="col-lg-9">
+                <input type="text" placeholder="Address Line 1" class="form-control"
+                       [(ngModel)]="newUser.address.address1" name="address1">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label"></label>
+              <div class="col-lg-9">
+                <input class="form-control" type="text" value="" placeholder="Address Line 2"
+                       [(ngModel)]="newUser.address.address2" name="address2">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label"></label>
+              <div class="col-lg-6">
+                <input class="form-control" type="text" value="" placeholder="City"
+                       [(ngModel)]="newUser.address.city" name="city">
+              </div>
+              <div class="col-lg-3">
+                <input class="form-control" type="text" value="" placeholder="County"
+                       [(ngModel)]="newUser.address.county" name="county">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label"></label>
+              <div class="col-lg-6">
+                <input class="form-control" type="text" value="" placeholder="Postcode"
+                       [(ngModel)]="newUser.address.postcode" name="postcode">
+              </div>
+              <div class="col-lg-3">
+                <input class="form-control" type="text" value="" placeholder="Country"
+                       [(ngModel)]="newUser.address.country" name="country">
+              </div>
+            </div>
+            <!-- Text input-->
+
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Username</label>
+              <div class="col-lg-9">
+                <input class="form-control" type="text" value="janeuser">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Password</label>
+              <div class="col-lg-9">
+                <input class="form-control" type="password" value="11111122333">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
+              <div class="col-lg-9">
+                <input class="form-control" type="password" value="11111122333">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label form-control-label"></label>
+              <div class="col-lg-9">
+                <input type="reset" class="btn btn-secondary" value="Cancel">
+                <input type="button" class="btn btn-primary" value="Save Changes" (click)="onUpdateProfile()">
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-      <div class="col-md-6"></div>
     </div>
-    <br>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group row clearfix">
-          <label for="inputFirstName" class="col-sm-3 control-label">First Name</label>
-
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputFirstName" placeholder="" value="{{user.first_name}}">
-          </div>
-        </div>
-        <div class="form-group row clearfix">
-          <label for="inputLastName" class="col-sm-3 control-label">Last Name</label>
-
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputLastName" placeholder="" value="{{user.last_name}}">
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group row clearfix">
-          <label class="col-sm-3 control-label">Department</label>
-
-          <div class="col-sm-9">
-            <select class="form-control" selectpicker>
-              <option>Web Development</option>
-              <option>System Development</option>
-              <option>Sales</option>
-              <option>Human Resources</option>
-              <option>Transport</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group row clearfix">
-          <label for="inputOccupation" class="col-sm-3 control-label">Occupation</label>
-
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputOccupation" placeholder="" value="Front End Web Developer">
-          </div>
-        </div>
-      </div>
+    <div class="col-lg-4 order-lg-1 text-center">
+      <img [src]='sanitizer.bypassSecurityTrustResourceUrl(picture)' (click)="setImgUrl()" class="mx-auto img-fluid rounded-top d-block" alt="avatar">
+      <h6 class="mt-2">Upload a different photo</h6>
+      <label class="custom-file">
+        <input type="file" id="file" class="custom-file-input" (change)="onImage($event)" accept="image/png, image/jpeg, image/jpg">
+        <span class="custom-file-control">Choose file</span>
+      </label>
     </div>
-
-    <h3 class="with-line">Change Password</h3>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group row clearfix">
-          <label for="inputPassword" class="col-sm-3 control-label">Password</label>
-
-          <div class="col-sm-9">
-            <input type="password" class="form-control" id="inputPassword" placeholder="" value="{{user.password}}">
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group row clearfix">
-          <label for="inputConfirmPassword" class="col-sm-3 control-label">Confirm Password</label>
-
-          <div class="col-sm-9">
-            <input type="password" class="form-control" id="inputConfirmPassword" placeholder="">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h3 class="with-line">Contact Information</h3>
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group row clearfix">
-          <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
-
-          <div class="col-sm-9">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="" value="{{user.email}}">
-          </div>
-        </div>
-        <div class="form-group row clearfix">
-          <label for="inputPhone" class="col-sm-3 control-label">Phone</label>
-
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputPhone" placeholder="" value="{{user.phone_no}}">
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group row clearfix">
-          <label class="col-sm-3 control-label">Office Location</label>
-
-          <div class="col-sm-9">
-            <select class="form-control" title="Standard Select" selectpicker>
-              <option>San Francisco</option>
-              <option>London</option>
-              <option>Minsk</option>
-              <option>Tokio</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group row clearfix">
-          <label for="inputRoom" class="col-sm-3 control-label">Room</label>
-
-          <div class="col-sm-9">
-            <input type="text" class="form-control" id="inputRoom" placeholder="" value="303">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h3 class="with-line">Social Profiles</h3>
-
-    <div class="social-profiles row clearfix">
-      <div class="col-md-3 col-sm-4" ng-repeat="">
-
-        <a class="sn-link" href ng-click="" ng-if="">
-          <i class="socicon "></i>
-          <span></span>
-        </a>
-
-        <a class="sn-link connected" href="" target="_blank" ng-if="">
-          <i class="socicon "></i>
-          <span></span>
-          <em class="ion-ios-close-empty sn-link-close" ng-mousedown=""></em>
-        </a>
-      </div>
-    </div>
-
-    <h3 class="with-line">Send Email Notifications</h3>
-
-    <!--<div class="notification row clearfix">-->
-      <!--<div class="col-sm-6">-->
-        <!--<div class="form-group row clearfix">-->
-          <!--<label class="col-xs-8">When I receive a message</label>-->
-
-          <!--<div class="col-xs-4">-->
-            <!--<switch color="primary" ng-model="switches[0]"></switch>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group row clearfix">-->
-          <!--<label class="col-xs-8">When Someone sends me an invitation</label>-->
-
-          <!--<div class="col-xs-4">-->
-            <!--<switch color="primary" ng-model="switches[1]"></switch>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group row clearfix">-->
-          <!--<label class="col-xs-8">When profile information changes</label>-->
-
-          <!--<div class="col-xs-4">-->
-            <!--<switch color="primary" ng-model="switches[2]"></switch>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="col-sm-6">-->
-        <!--<div class="form-group row clearfix">-->
-          <!--<label class="col-xs-8">When anyone logs into your account from a new device or browser</label>-->
-
-          <!--<div class="col-xs-4">-->
-            <!--<switch color="primary" ng-model="switches[3]"></switch>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="form-group row clearfix">-->
-          <!--<label class="col-xs-8">Weekly Reports</label>-->
-
-          <!--<div class="col-xs-4">-->
-            <!--<switch color="primary" ng-model="switches[4]"></switch>-->
-          <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="form-group row clearfix">-->
-          <!--<label class="col-xs-8">Daily Reports</label>-->
-
-          <!--<div class="col-xs-4">-->
-            <!--<switch color="primary" ng-model="switches[5]"></switch>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-    <button type="button" class="btn btn-primary btn-with-icon save-profile">
-      <i class="ion-android-checkmark-circle"></i>Update Profile
-    </button>
   </div>
-</div>
 </div>

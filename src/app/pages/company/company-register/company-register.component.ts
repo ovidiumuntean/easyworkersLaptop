@@ -3,6 +3,7 @@ import { ValidateService } from '../../../services/validate.service';
 import { AuthService } from '../../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import {Address} from "../../../models/address";
 
 @Component({
   selector: 'app-company-register',
@@ -16,7 +17,7 @@ export class CompanyRegisterComponent implements OnInit {
   name: String;
   regNo: String;
   phoneNo: String;
-  address: String;
+  address: Address;
   email: String;
   password: String;
 
@@ -24,7 +25,9 @@ export class CompanyRegisterComponent implements OnInit {
     private validateService: ValidateService,
     private authService: AuthService,
     private router: Router,
-    private flashMessage: FlashMessagesService) { }
+    private flashMessage: FlashMessagesService) {
+    this.address = new Address();
+  }
 
   ngOnInit() {
   }
@@ -52,7 +55,7 @@ export class CompanyRegisterComponent implements OnInit {
     }
 
     // Required Fields
-    if(!this.validateService.validateRegisterCompany(company.company)) {
+    if(!this.validateService.validateRegisterCompany(company.company) || !this.validateService.validateAddress(company.company.address)) {
       this.flashMessage.show('Please fill in all fields', {cssClass: 'alert-danger', timeout: 3000});
       return false;
     }

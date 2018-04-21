@@ -44,4 +44,54 @@ export class ValidateService {
       return true;
     }
   }
+
+  validateAddress(address){
+    if(address.address1 == undefined || address.city == undefined || address.county == undefined || address.country == undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  // check if an object is empty ( true = empty, and false = not empty)
+  isEmpty(obj) {
+    for ( var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        return false;
+      }
+    }
+    return true;
+  }// end isEmpty
+
+  // check if a propriety is empty
+  validateObj(obj){
+    if(!this.isEmpty(obj)) {
+      for (var key in obj) {
+        if (obj[key] === undefined) {
+          return false;
+        }
+      }
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  //converting date Object to string (Format: YYYY-MM-DD )
+  dateToString(date) {
+    try {
+      date = new Date(date);
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      if (day < 10) {
+        day = '0' + day;
+      }
+      if (month < 10) {
+        month = '0' + month;
+      }
+      return date.getFullYear() + '-' + month + '-' + day;
+    } catch (e) {
+      return  "Date cannot be converted! Convert to jvascript Date Obj first! " + e;
+    }
+  };// end dateToString
 }

@@ -10,8 +10,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./view-jobs.component.css']
 })
 export class ViewJobsComponent implements OnInit {
-  jobs: Object;
-  job: Object;
+  jobs: any;
+  job: object;
   @Input() jobId: String;
   @Output() jobIdEvent = new EventEmitter<string>();
 

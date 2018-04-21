@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, enableProdMode } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 // import {DatePickerModule} from 'ng2-datepicker-bootstrap';
 import { HttpModule } from '@angular/http';
@@ -31,6 +31,9 @@ import { ViewJobsComponent } from './pages/job/view-jobs/view-jobs.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ViewJobComponent } from './pages/job/view-job/view-job.component';
 import { JobApplicationsComponent } from './pages/job/job-applications/job-applications.component';
+import { ApplicationComponent } from './pages/job/application/application.component';
+
+enableProdMode();
 
 const appRoutes: Routes =  [
   {path:'', component: HomeComponent},
@@ -46,7 +49,8 @@ const appRoutes: Routes =  [
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'job/view-job', component: ViewJobComponent, canActivate:[AuthGuard]},
-  {path:'job/job-applications', component: JobApplicationsComponent, canActivate:[AuthGuard]}
+  {path:'job/job-applications', component: JobApplicationsComponent, canActivate:[AuthGuard]},
+  {path:'job/job-application', component: ApplicationComponent, canActivate:[AuthGuard]}
 ]
 
 @NgModule({
@@ -67,7 +71,8 @@ const appRoutes: Routes =  [
     ViewJobsComponent,
     SidebarComponent,
     ViewJobComponent,
-    JobApplicationsComponent
+    JobApplicationsComponent,
+    ApplicationComponent
   ],
   imports: [
     BrowserModule,

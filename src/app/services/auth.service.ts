@@ -11,6 +11,7 @@ export class AuthService {
   user: any;
   company: any;
   employee: any;
+  baseUrl: string = "http://localhost:3000/";
 
   constructor(private http: Http) { }
 
@@ -27,19 +28,20 @@ export class AuthService {
     }
   }
 
+  //********************************    User METHODS    ********************************************
   registerUser(user) {
     const headers = new Headers();
     const options = new RequestOptions({ headers: headers });
 
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/register', user, options)
+    return this.http.post('http://localhost:3000/user/register', user, options)
       .map(res => res.json());
   }
 
   authenticateUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers})
+    return this.http.post('http://localhost:3000/user/authenticate', user, {headers: headers})
       .map(res => res.json());
   }
 
@@ -47,8 +49,7 @@ export class AuthService {
     const headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
-    headers.append('Content-Type', 'application/json');
-    return this.http.get('http://localhost:3000/users/profile', {headers: headers})
+    return this.http.get('http://localhost:3000/user/profile', {headers: headers})
       .map(res => res.json());
   }
 
@@ -74,10 +75,29 @@ export class AuthService {
     }
   }
 
+  updateImage(image){
+    const headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    return this.http.put(this.baseUrl + 'user/update-image', image, {headers: headers})
+      .map(res => res.json());
+  }
+
+  updateProfile(updateData){
+    if (this.loggedIn()) {
+      const headers = new Headers();
+      this.loadToken();
+      headers.append('Authorization', this.authToken);
+      return this.http.put('http://localhost:3000/user/update', updateData, {headers: headers})
+        .map(res => res.json());
+    }
+  }
+
+
+  // *********************      COMPANY/EMPLOYEE METHODS    *******************************
   employeeLoggedIn() {
     this.checkLocalStorage();
     if (this.employee) {
-      console.log('Emp Token not expired!');
       return tokenNotExpired('id_token');
     } else {
       return false;
@@ -182,6 +202,19 @@ export class AuthService {
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
     return this.http.get('http://localhost:3000/jobs/job-applications', {headers: headers})
+      .map(res => res.json());
+  }
+
+  // getting the job application by the job id
+  getJobApplicationById(applicationId){
+    const headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    const options = new RequestOptions({
+      headers: headers,
+      params: {jobId: applicationId}
+    });
+    return this.http.get('http://localhost:3000/jobs/job-application', options)
       .map(res => res.json());
   }
 

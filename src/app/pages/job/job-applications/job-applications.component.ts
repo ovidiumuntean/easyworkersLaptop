@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import {NavigationExtras, Router} from "@angular/router";
 
 @Component({
   selector: 'app-job-applications',
@@ -13,7 +14,8 @@ export class JobApplicationsComponent implements OnInit {
 
   constructor(
     private flashMessage: FlashMessagesService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -39,7 +41,12 @@ export class JobApplicationsComponent implements OnInit {
 
   }
 
-  onShowMore(i){
-
+  onShowApplication(applicationId){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "applicationId": applicationId
+      }
+    };
+    this.router.navigate(['/job/job-application'], navigationExtras);
   }
 }

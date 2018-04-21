@@ -1,20 +1,39 @@
-<app-navbar></app-navbar>
-<!--<div class="container">-->
-  <!--<flash-messages></flash-messages>-->
-  <!--<router-outlet></router-outlet>-->
-  <!--&lt;!&ndash;<app-datepicker></app-datepicker>&ndash;&gt;-->
-<!--</div>-->
-<mat-sidenav-container style="height: max-content">
+<!--<app-navbar></app-navbar>-->
+<!--&lt;!&ndash;<div class="container">&ndash;&gt;-->
+  <!--&lt;!&ndash;<flash-messages></flash-messages>&ndash;&gt;-->
+  <!--&lt;!&ndash;<router-outlet></router-outlet>&ndash;&gt;-->
+  <!--&lt;!&ndash;&lt;!&ndash;<app-datepicker></app-datepicker>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<mat-sidenav-container style="height: max-content">-->
+  <!--<mat-sidenav mode="side" opened="true"  class="nav-side-menu">-->
+    <!--<app-sidebar></app-sidebar>-->
+  <!--</mat-sidenav>-->
+  <!--<mat-sidenav-content style="height: max-content">-->
+    <!--<div class="container" style="height: 100%">-->
+      <!--<flash-messages></flash-messages>-->
+      <!--<div class="container-fluid" >-->
+        <!--<router-outlet></router-outlet>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;<app-datepicker></app-datepicker>&ndash;&gt;-->
+    <!--</div>-->
+  <!--</mat-sidenav-content>-->
+<!--</mat-sidenav-container>-->
+<mat-sidenav-container class="all-wrap" fullscreen >
   <mat-sidenav mode="side" opened="true"  class="nav-side-menu">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
-  <mat-sidenav-content style="height: max-content">
-    <div class="container" style="height: 100%">
-      <flash-messages></flash-messages>
-      <div class="container-fluid" >
+  <div class="page-wrap">
+    <header role="banner">
+      <app-navbar></app-navbar>
+    </header>
+    <main class="content">
+      <div class="container">
+        <flash-messages></flash-messages>
         <router-outlet></router-outlet>
       </div>
-      <!--<app-datepicker></app-datepicker>-->
-    </div>
-  </mat-sidenav-content>
+    </main>
+    <footer>
+      Your sticky footer with a variable height
+    </footer>
+  </div>
 </mat-sidenav-container>
